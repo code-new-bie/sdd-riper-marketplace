@@ -1,0 +1,21 @@
+{
+  "name": "sdd-riper",
+  "owner": {
+    "name": "SDD-RIPER Team"
+  },
+  "metadata": {
+    "description": "SDD-RIPER 方法论 Claude Code 插件集合：完整版与轻量版 AI Agent Harness"
+  },
+  "plugins": [
+    {
+      "name": "sdd-riper-one",
+      "source": "./plugins/sdd-riper-one",
+      "description": "将 SDD-RIPER 方法论落地为严格可执行流程的技能"
+    },
+    {
+      "name": "sdd-riper-one-light",
+      "source": "./plugins/sdd-riper-one-light",
+      "description": "面向强模型的轻量 AI Agent Harness"
+    }
+  ]
+}
