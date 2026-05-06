@@ -14,11 +14,8 @@ SDD-RIPER 方法论 Claude Code 插件集合，包含完整版与轻量版 AI Ag
 ### 1. 添加 Marketplace
 
 ```bash
-# 本地路径
-claude plugin marketplace add ./sdd-riper-marketplace
-
-# 或绝对路径
-claude plugin marketplace add C:\Users\li\Documents\ai_project\SDD\sdd-riper-marketplace
+# Add sdd-riper-marketplace
+claude plugin marketplace add sdd-riper-marketplace
 ```
 
 ### 2. 安装插件
