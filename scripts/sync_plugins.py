@@ -42,43 +42,51 @@ def sync_sdd_riper_one() -> int:
     """同步 sdd-riper-one 插件"""
     plugin_dir = PLUGINS / "sdd-riper-one"
     src_dir = SRC_SKILLS / "sdd-riper-one"
+    skill_dir = plugin_dir / "skills" / "sdd-riper-one"
 
     count = 0
 
     # SKILL.md
     if sync_file(
         src_dir / "SKILL.md",
-        plugin_dir / "skills" / "sdd-riper-one" / "SKILL.md"
+        skill_dir / "SKILL.md"
+    ):
+        count += 1
+
+    # README.md
+    if sync_file(
+        src_dir / "README.md",
+        skill_dir / "README.md"
+    ):
+        count += 1
+
+    # agents.md
+    if sync_file(
+        src_dir / "agents.md",
+        skill_dir / "agents.md"
     ):
         count += 1
 
     # agents
     if sync_file(
         src_dir / "agents" / "openai.yaml",
-        plugin_dir / "agents" / "openai.yaml"
+        skill_dir / "agents" / "openai.yaml"
     ):
         count += 1
 
     # scripts
     if sync_file(
         src_dir / "scripts" / "archive_builder.py",
-        plugin_dir / "scripts" / "archive_builder.py"
+        skill_dir / "scripts" / "archive_builder.py"
     ):
         count += 1
 
     # references (7 files)
     refs_src = src_dir / "references"
-    refs_dst = plugin_dir / "references"
+    refs_dst = skill_dir / "references"
     for ref_file in refs_src.glob("*.md"):
         if sync_file(ref_file, refs_dst / ref_file.name):
             count += 1
-
-    # README
-    if sync_file(
-        src_dir / "README.md",
-        plugin_dir / "README.md"
-    ):
-        count += 1
 
     return count
 
@@ -87,26 +95,34 @@ def sync_sdd_riper_one_light() -> int:
     """同步 sdd-riper-one-light 插件"""
     plugin_dir = PLUGINS / "sdd-riper-one-light"
     src_dir = SRC_SKILLS / "sdd-riper-one-light"
+    skill_dir = plugin_dir / "skills" / "sdd-riper-one-light"
 
     count = 0
 
     # SKILL.md
     if sync_file(
         src_dir / "SKILL.md",
-        plugin_dir / "skills" / "sdd-riper-one-light" / "SKILL.md"
+        skill_dir / "SKILL.md"
+    ):
+        count += 1
+
+    # README.md
+    if sync_file(
+        src_dir / "README.md",
+        skill_dir / "README.md"
     ):
         count += 1
 
     # agents
     if sync_file(
         src_dir / "agents" / "openai.yaml",
-        plugin_dir / "agents" / "openai.yaml"
+        skill_dir / "agents" / "openai.yaml"
     ):
         count += 1
 
     # references (3 files)
     refs_src = src_dir / "references"
-    refs_dst = plugin_dir / "references"
+    refs_dst = skill_dir / "references"
     for ref_file in refs_src.glob("*.md"):
         if sync_file(ref_file, refs_dst / ref_file.name):
             count += 1
@@ -114,30 +130,23 @@ def sync_sdd_riper_one_light() -> int:
     # examples/README.md
     if sync_file(
         src_dir / "examples" / "README.md",
-        plugin_dir / "examples" / "README.md"
+        skill_dir / "examples" / "README.md"
     ):
         count += 1
 
     # examples/codemap
     codemap_src = src_dir / "examples" / "codemap"
-    codemap_dst = plugin_dir / "examples" / "codemap"
+    codemap_dst = skill_dir / "examples" / "codemap"
     for example_file in codemap_src.glob("*.md"):
         if sync_file(example_file, codemap_dst / example_file.name):
             count += 1
 
     # examples/specs
     specs_src = src_dir / "examples" / "specs"
-    specs_dst = plugin_dir / "examples" / "specs"
+    specs_dst = skill_dir / "examples" / "specs"
     for example_file in specs_src.glob("*.md"):
         if sync_file(example_file, specs_dst / example_file.name):
             count += 1
-
-    # README
-    if sync_file(
-        src_dir / "README.md",
-        plugin_dir / "README.md"
-    ):
-        count += 1
 
     return count
 

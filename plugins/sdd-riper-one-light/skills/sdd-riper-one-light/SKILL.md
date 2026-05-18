@@ -1,18 +1,16 @@
 ---
 name: sdd-riper-one-light
-description: 面向 GPT-5.4 等强模型的轻量 AI Agent Harness / checkpoint-driven coding skill。用于高输入、高频、多轮的代码与 agentic coding 任务；默认承认模型是事件推进主体，由模型自行分解、探索与推进，人类通过最小 spec、复述、checkpoint、批准、证据验证与回写来控盘。
+description: 面向 GPT-5.4 等强模型的轻量 spec-driven / checkpoint-driven coding skill。用于高输入、高频、多轮的代码与 agentic coding 任务，默认短输出、中文沟通、模型自行分解任务；常驻只保留最小 spec、先复述理解、执行前 checkpoint、批准后执行、执行后回写五类关键约束。
 ---
 
 # SDD-RIPER-ONE Light
 
 ## 核心定位
 
-- 这是面向强模型的轻量 **AI Agent Harness**，不是 `phase-heavy` 版本。
-- 默认承认模型已经从“助手”变成事件推进的主体：模型负责分解、探索、试错和推进；人类负责方向、边界、节奏、风险与验收。
+- 这是 `checkpoint-driven` 版本，不是 `phase-heavy` 版本。
 - 默认假设强模型已经能自行分解任务、补足局部计划、按需追溯上下文。
 - 主协议只保留少数高杠杆锚点，其余规范按需查看 reference。
 - 目标不是减少控制力，而是减少低价值常驻 token。
-- 控制方式不是预设每一步，而是在关键节点设闸：Restate、Checkpoint、Approval、Validation、Reverse Sync。
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型只关注当前该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
 
 ## 硬约束

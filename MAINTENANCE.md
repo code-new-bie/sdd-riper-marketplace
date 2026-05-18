@@ -21,19 +21,20 @@ python scripts/sync_plugins.py
 ```bash
 # 同步 sdd-riper-one
 cp sdd-riper/skills/sdd-riper-one/SKILL.md sdd-riper-marketplace/plugins/sdd-riper-one/skills/sdd-riper-one/
-cp sdd-riper/skills/sdd-riper-one/agents/openai.yaml sdd-riper-marketplace/plugins/sdd-riper-one/agents/
-cp sdd-riper/skills/sdd-riper-one/scripts/archive_builder.py sdd-riper-marketplace/plugins/sdd-riper-one/scripts/
-cp sdd-riper/skills/sdd-riper-one/references/*.md sdd-riper-marketplace/plugins/sdd-riper-one/references/
-cp sdd-riper/skills/sdd-riper-one/README.md sdd-riper-marketplace/plugins/sdd-riper-one/
+cp sdd-riper/skills/sdd-riper-one/README.md sdd-riper-marketplace/plugins/sdd-riper-one/skills/sdd-riper-one/
+cp sdd-riper/skills/sdd-riper-one/agents.md sdd-riper-marketplace/plugins/sdd-riper-one/skills/sdd-riper-one/
+cp sdd-riper/skills/sdd-riper-one/agents/openai.yaml sdd-riper-marketplace/plugins/sdd-riper-one/skills/sdd-riper-one/agents/
+cp sdd-riper/skills/sdd-riper-one/scripts/archive_builder.py sdd-riper-marketplace/plugins/sdd-riper-one/skills/sdd-riper-one/scripts/
+cp sdd-riper/skills/sdd-riper-one/references/*.md sdd-riper-marketplace/plugins/sdd-riper-one/skills/sdd-riper-one/references/
 
 # 同步 sdd-riper-one-light
 cp sdd-riper/skills/sdd-riper-one-light/SKILL.md sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/
-cp sdd-riper/skills/sdd-riper-one-light/agents/openai.yaml sdd-riper-marketplace/plugins/sdd-riper-one-light/agents/
-cp sdd-riper/skills/sdd-riper-one-light/references/*.md sdd-riper-marketplace/plugins/sdd-riper-one-light/references/
-cp sdd-riper/skills/sdd-riper-one-light/examples/README.md sdd-riper-marketplace/plugins/sdd-riper-one-light/examples/
-cp sdd-riper/skills/sdd-riper-one-light/examples/codemap/*.md sdd-riper-marketplace/plugins/sdd-riper-one-light/examples/codemap/
-cp sdd-riper/skills/sdd-riper-one-light/examples/specs/*.md sdd-riper-marketplace/plugins/sdd-riper-one-light/examples/specs/
-cp sdd-riper/skills/sdd-riper-one-light/README.md sdd-riper-marketplace/plugins/sdd-riper-one-light/
+cp sdd-riper/skills/sdd-riper-one-light/README.md sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/
+cp sdd-riper/skills/sdd-riper-one-light/agents/openai.yaml sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/agents/
+cp sdd-riper/skills/sdd-riper-one-light/references/*.md sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/references/
+cp sdd-riper/skills/sdd-riper-one-light/examples/README.md sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/examples/
+cp sdd-riper/skills/sdd-riper-one-light/examples/codemap/*.md sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/examples/codemap/
+cp sdd-riper/skills/sdd-riper-one-light/examples/specs/*.md sdd-riper-marketplace/plugins/sdd-riper-one-light/skills/sdd-riper-one-light/examples/specs/
 ```
 
 ## 同步后验证
@@ -47,11 +48,11 @@ claude plugin validate sdd-riper-marketplace
 | 变更类型 | 文件位置 | 处理方式 |
 |---------|---------|---------|
 | SKILL.md 协议变更 | skills/*/SKILL.md | 直接同步，可能需要更新版本号 |
-| references 文档变更 | references/*.md | 直接同步 |
+| references 文档变更 | skills/*/references/*.md | 直接同步 |
 | 新增原生命令动作 | - | 需在 commands/ 创建对应 .md 文件 |
-| agents 配置变更 | agents/openai.yaml | 直接同步 |
-| 脚本变更 | scripts/*.py | 直接同步 |
-| 示例变更 | examples/* | 直接同步 |
+| agents 配置变更 | skills/*/agents/openai.yaml | 直接同步 |
+| 脚本变更 | skills/*/scripts/*.py | 直接同步 |
+| 示例变更 | skills/*/examples/* | 直接同步 |
 
 ## 新增 Command 处理
 
@@ -112,28 +113,29 @@ description: 命令用途描述
 
 ```
 源目录                                    目标目录
-sdd-riper/skills/sdd-riper-one/    →    plugins/sdd-riper-one/
+sdd-riper/skills/sdd-riper-one/    →    plugins/sdd-riper-one/skills/sdd-riper-one/
 
-SKILL.md                          →    skills/sdd-riper-one/SKILL.md
+SKILL.md                          →    SKILL.md
+README.md                         →    README.md
+agents.md                         →    agents.md
 agents/openai.yaml                →    agents/openai.yaml
 scripts/archive_builder.py        →    scripts/archive_builder.py
 references/*.md (7 files)         →    references/*.md
-README.md                         →    README.md
 ```
 
 ### sdd-riper-one-light
 
 ```
 源目录                                         目标目录
-sdd-riper/skills/sdd-riper-one-light/    →    plugins/sdd-riper-one-light/
+sdd-riper/skills/sdd-riper-one-light/    →    plugins/sdd-riper-one-light/skills/sdd-riper-one-light/
 
-SKILL.md                          →    skills/sdd-riper-one-light/SKILL.md
+SKILL.md                          →    SKILL.md
+README.md                         →    README.md
 agents/openai.yaml                →    agents/openai.yaml
 references/*.md (3 files)         →    references/*.md
 examples/README.md                →    examples/README.md
 examples/codemap/*.md             →    examples/codemap/*.md
 examples/specs/*.md               →    examples/specs/*.md
-README.md                         →    README.md
 ```
 
 ## 注意事项
